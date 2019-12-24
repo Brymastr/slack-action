@@ -3,6 +3,7 @@ const axios = require('axios');
 
 async function main() {
   const message = core.getInput('message');
+  console.log(message);
   const response = await axios.post(process.env.SLACK_WEBHOOK, message);
   console.log(response);
 }
