@@ -12,4 +12,4 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          message: <%= File.read('./message.json').inspect %>
+          message: "adsfasfdajskdlf;jaskldfjasklfjasdkl;fjlsa;jdfkl"
