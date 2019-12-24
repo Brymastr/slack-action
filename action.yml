@@ -1,0 +1,12 @@
+name: "Slack Action"
+description: "Send a fully custom slack notification"
+inputs:
+  slack-webhook: # id of input
+    description: "Webhook URL for slack bot"
+    required: true
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "node12"
+  main: "index.js"
