@@ -1,8 +1,10 @@
 const core = require('@actions/core');
 const axios = require('axios');
+const fs = require('fs');
 
 async function main() {
-  const message = core.getInput('message');
+  const messageDir = core.getInput('message');
+  const message = fs.readFileSync(messageDir);
   console.log(message);
   const response = await axios.post(process.env.SLACK_WEBHOOK, message);
   console.log(response);
