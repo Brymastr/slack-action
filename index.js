@@ -4,6 +4,7 @@ const fs = require('fs');
 
 async function main() {
   const messageDir = core.getInput('message');
+  console.log(fs.readFileSync('./'));
   const message = fs.readFileSync(messageDir);
   console.log(message);
   const response = await axios.post(process.env.SLACK_WEBHOOK, message);
