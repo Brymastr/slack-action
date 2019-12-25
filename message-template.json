@@ -4,7 +4,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This is a plain text section block."
+        "text": "GitHub Actions Build {{ job_status }}"
       }
     },
     {
@@ -12,10 +12,28 @@
     },
     {
       "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": "This is a mrkdwn {{ test1 }} section {{ test2 }} block {{ test1 }}"
-      }
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Repo:*\n{{ repo }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Status:*\n{{ job_status }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Ref:*\n{{ ref }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Event:*\n{{ event }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Commit:*\n{{ commit }}"
+        }
+      ]
     }
   ]
 }
