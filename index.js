@@ -16,7 +16,7 @@ console.log(variables);
 
 async function main() {
   const messageDir = core.getInput('template');
-  let message = fs.readFileSync(messageDir);
+  let message = fs.readFileSync(messageDir, 'utf8');
   for (const [key, value] of variables) {
     const regex = new RegExp('{{ *' + key.toLowerCase() + ' *}}', 'g');
     message = message.replace(regex, value);
