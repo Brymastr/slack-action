@@ -4,12 +4,13 @@ const fs = require('fs');
 
 const commit = process.env['GITHUB_SHA'];
 const repo = process.env['GITHUB_REPOSITORY'];
-const ref = process.env['GITHUB_REF'];
-const workflow = process.env['GITHUB_WORKFLOW'];
-const event = process.env['GITHUB_EVENT_NAME'];
-const url = `https://github.com/${repo}/commit/${commit}/checks`;
+const repoUrl = `https://github.com/${repo}`;
+const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
 
 const variables = Object.entries(process.env).filter(x => x[0].startsWith('INPUT_'));
+
+variables.push(['repo_url', repoUrl]);
+variables.push(['actions_url', actionsUrl]);
 
 async function main() {
   const messageDir = core.getInput('template');
@@ -19,7 +20,6 @@ async function main() {
     const regex = new RegExp('{{ *' + key + ' *}}', 'g');
     message = message.replace(regex, v);
   }
-  console.log(message);
   await axios.post(process.env.SLACK_WEBHOOK, message).catch(err => {
     throw new Error(err);
   });
