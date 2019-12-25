@@ -11,16 +11,15 @@ const url = `https://github.com/${repo}/commit/${commit}/checks`;
 
 const variables = Object.entries(process.env).filter(x => x[0].startsWith('INPUT_'));
 
-console.log(url);
-console.log(variables);
-
 async function main() {
   const messageDir = core.getInput('template');
   let message = fs.readFileSync(messageDir, 'utf8');
-  for (const [key, value] of variables) {
-    const regex = new RegExp('{{ *' + key.toLowerCase() + ' *}}', 'g');
-    message = message.replace(regex, value);
+  for (const [k, v] of variables) {
+    const key = k.replace('INPUT_', '').toLowerCase();
+    const regex = new RegExp('{{ *' + key + ' *}}', 'g');
+    message = message.replace(regex, v);
   }
+  console.log(message);
   await axios.post(process.env.SLACK_WEBHOOK, message).catch(err => {
     throw new Error(err);
   });
