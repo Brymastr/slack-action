@@ -14,7 +14,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This is a mrkdwn {{ test_var }} section block :ghost: *this is bold*, and ~this is crossed out~, and <https: //google.com|this is a link>"
+        "text": "This is a mrkdwn {{ test1 }} section {{ test2 }} block {{ test1 }}"
       }
     }
   ]
