@@ -12,4 +12,5 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          message: "./message.json"
+          test_var: "NEW VALUE"
+          template: "./message-template.json"
