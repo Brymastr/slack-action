@@ -1,8 +1,8 @@
 name: "Slack Action"
 description: "Send a fully custom slack notification"
 inputs:
-  message:
-    description: "Slack message"
+  template:
+    description: "slack message json template file"
     required: true
 runs:
   using: "node12"

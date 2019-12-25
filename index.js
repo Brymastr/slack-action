@@ -15,7 +15,7 @@ console.log(url);
 console.log(variables);
 
 async function main() {
-  const messageDir = core.getInput('message');
+  const messageDir = core.getInput('template');
   let message = fs.readFileSync(messageDir);
   for (const [key, value] of variables) {
     const regex = new RegExp('{{ *' + key.toLowerCase() + ' *}}', 'g');
