@@ -20,9 +20,9 @@ async function main() {
     const regex = new RegExp('{{ *' + key + ' *}}', 'g');
     message = message.replace(regex, v);
   }
-  await axios.post(process.env.SLACK_WEBHOOK, message).catch(err => {
-    throw new Error(err);
-  });
+  await axios
+    .post(process.env.SLACK_WEBHOOK, message)
+    .catch(err => core.setFailed(err.message));
 }
 
 try {
