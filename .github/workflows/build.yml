@@ -13,7 +13,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          template: "./message-template.json"
+          template: "./.github/workflows/message-template.json"
           job_status: ${{ job.status }}
           commit: ${{ github.sha }}
           ref: ${{ github.ref }}
