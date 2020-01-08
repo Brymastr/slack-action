@@ -6,11 +6,14 @@ const commit = process.env['GITHUB_SHA'];
 const repo = process.env['GITHUB_REPOSITORY'];
 const repoUrl = `https://github.com/${repo}`;
 const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
+// const jobStatus = process.env['GITHUB_JOB'];
+console.log(process.env);
 
 const variables = Object.entries(process.env).filter(x => x[0].startsWith('INPUT_'));
 
 variables.push(['repo_url', repoUrl]);
 variables.push(['actions_url', actionsUrl]);
+variables.push(['job_status']);
 
 async function main() {
   const messageDir = core.getInput('template');
