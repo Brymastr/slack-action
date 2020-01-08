@@ -10,10 +10,25 @@ Send custom slack messages given a slack block template
   env:
     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   with:
-    template: './example-message-template.json'
-    key1: value 1
-    key2: value 2
+    template: './template.json'
+    exampleKey1: example value 1
     job_status: ${{ job.status }}
+```
+
+template.json
+
+```json
+{
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "Example: {{ exampleKey1 }} and {{ job_status }}"
+      }
+    }
+  ]
+}
 ```
 
 Use of this action requires a GitHub secret called `SLACK_WEBHOOK`. The value should include the channel id and look something like this: `https://hooks.slack.com/services/11111ZZZZ/22222XXXX/1a2B3c4e5F6G7h8I9j0k`
