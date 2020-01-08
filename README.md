@@ -40,14 +40,37 @@ See [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/w
 **Required Arguments**
 
 - **`SLACK_WEBHOOK`** - provided as an `env` variable, this is the full webhook url for your bot channel.
-- **template** - provided in the `with` args, is the path to the message template json file. This path should be relative from the project root.
+- **`template`** - provided in the `with` args, is the path to the message template json file. This path should be relative from the project root.
 
 **Optional Arguments**  
 Any other custom arguments can be provided and will be included in the template. From the example above all occurrences of `{{ key1 }}` in the `example-message-template.json` file will be replace with `value 1`.
 
+## Default and Computed Properties
+
+Most `github` context properties are included by default without needing to pass them in through a `with` argument. Some properties have been renamed to make a bit more sense. See [Contexts](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions#contexts) for more info.
+
+| Property Name       | Replacement Variable |
+| ------------------- | -------------------- |
+| `github.sha`        | `commit`             |
+| `github.repository` | `repo`               |
+| `github.ref`        | `ref`                |
+| `github.head_ref`   | `head_ref`           |
+| `github.base_ref`   | `base_ref`           |
+| `github.actor`      | `actor`              |
+| `github.event_name` | `event`              |
+| `github.workflow`   | `workflow`           |
+
+In addition to these github context properties there are 2 computed properties that could be useful
+
+| Replacement Variable | Description                                               |
+| -------------------- | --------------------------------------------------------- |
+| `repo_url`           | the URL of the github repo                                |
+| `actions_url`        | the URL of the github actions workflow run for the commit |
+
 ## Notes
 
-Check out the [examples](examples/) directory for some examples  
+Check out the [examples](examples/) directory for some examples
+
 Try the Slack [Block Kit Builder](https://api.slack.com/tools/block-kit-builder) for message template inspiration
 
 ## Motivation
