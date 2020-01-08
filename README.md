@@ -75,7 +75,7 @@ Try the Slack [Block Kit Builder](https://api.slack.com/tools/block-kit-builder)
 
 ## Motivation
 
-Slack notifications are a feature of an automated build pipelines. There are a few existing GitHub Actions that send slack messages but most use a predetermined format and only allow for title or subject customization. This action allows for full block customization. I would like this action to serve as a simple, solid, and customizable slack notification action with as few dependencies as possible.
+Slack notifications are a common feature in automated build pipelines. There are already a few existing GitHub Actions that send slack messages but most use a predetermined format and only allow for title or subject customization. This action allows for full block customization. I would like this action to serve as a simple, solid, and customizable slack notification action with as few dependencies as possible.
 
 ## Alternatives
 
