@@ -1,6 +1,6 @@
 {
   "name": "slack-action",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Send fully custom slack messages",
   "main": "index.js",
   "scripts": {

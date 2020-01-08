@@ -4,7 +4,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "*GitHub Actions Build* {{ job_status }}\n_<{{ repo_url }}/commit/{{ commit }}|{{ commit }}>_"
+        "text": "GitHub Actions Build {{ job_status }}"
       },
       "accessory": {
         "type": "button",
@@ -37,6 +37,10 @@
         {
           "type": "mrkdwn",
           "text": "*Event:*\n{{ event }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Commit:*\n{{ commit }}"
         }
       ]
     }

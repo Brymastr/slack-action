@@ -7,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./
+
+      - uses: Brymastr/slack-action@v0.0.1
         name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
           template: "./.github/workflows/message-template.json"
-          job_status: ${{ job.status }}
+          key1: value1
