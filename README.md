@@ -15,7 +15,7 @@ Send custom slack messages given a slack block template
     job_status: ${{ job.status }}
 ```
 
-template.json
+`template.json`
 
 ```json
 {
@@ -43,7 +43,7 @@ See [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/w
 - **`template`** - provided in the `with` args, is the path to the message template json file. This path should be relative from the project root.
 
 **Optional Arguments**  
-Any other custom arguments can be provided and will be included in the template. From the example above all occurrences of `{{ key1 }}` in the `example-message-template.json` file will be replace with `value 1`.
+Any other custom arguments can be provided and will be included in the template. From the example above all occurrences of `{{ exampleKey1 }}` in the `template.json` file will be replace with `example value 1`.
 
 ## Default and Computed Properties
 
