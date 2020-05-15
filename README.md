@@ -1,5 +1,7 @@
 # slack-action
 
+![Build](https://github.com/Brymastr/slack-action/workflows/Build/badge.svg)
+
 Send custom slack messages given a slack block template
 
 ## Usage
