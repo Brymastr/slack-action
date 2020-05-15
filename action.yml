@@ -7,3 +7,6 @@ inputs:
 runs:
   using: "node12"
   main: "index.js"
+branding:
+  color: blue
+  icon: send
