@@ -1,4 +1,4 @@
-name: "Slack Action"
+name: "Custom Slack Action"
 description: "Send a fully custom slack notification"
 inputs:
   template:
