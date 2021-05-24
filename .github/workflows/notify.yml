@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: brymastr/slack-action@v1-beta
+      - uses: ./
         name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -29,7 +29,7 @@ jobs:
       - name: build
         run: npm run build
 
-      - uses: brymastr/slack-action@v1-beta
+      - uses: ./
         name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
