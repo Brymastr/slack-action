@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: Brymastr/slack-action@v0.0.1
+      - uses: Brymastr/slack-action@v1
         name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

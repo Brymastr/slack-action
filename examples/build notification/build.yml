@@ -14,7 +14,7 @@ jobs:
       - name: npm test
         run: npm test
 
-      - uses: Brymastr/slack-action@v0.0.1
+      - uses: Brymastr/slack-action@v1
         name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

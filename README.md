@@ -7,7 +7,7 @@ Send custom slack messages given a slack block template
 ## Usage
 
 ```yaml
-- uses: Brymastr/slack-action@v0.1.0
+- uses: Brymastr/slack-action@v1
   name: Slack notification
   env:
     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
