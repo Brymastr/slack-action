@@ -13,7 +13,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          template: "./.github/workflows/notify.json"
+          template: "./.github/workflows/push.json"
 
   build:
     runs-on: ubuntu-latest
