@@ -49,7 +49,7 @@ exports.getDefaultVariables = getDefaultVariables;
 function getInputVariables() {
     return Object.entries(process.env)
         .filter(x => x[0].startsWith('INPUT_'))
-        .map(([k, v]) => [k.replace('INPUT_', ''), v]);
+        .map(([k, v]) => [k.replace('INPUT_', '').toLowerCase(), v]);
 }
 exports.getInputVariables = getInputVariables;
 /**
@@ -644,6 +644,7 @@ async function main() {
     const slackChannel = process.env.SLACK_WEBHOOK.match(/services\/(.*)/)[1];
     await helpers_1.send(message, slackChannel);
 }
+exports.default = main;
 main().catch(({ message }) => core_1.setFailed(message));
 //# sourceMappingURL=index.js.map
 })();
