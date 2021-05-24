@@ -1,4 +1,4 @@
-name: Build
+name: Notify
 
 on: [push]
 
