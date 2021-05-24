@@ -3,7 +3,7 @@ name: Notify
 on: [push]
 
 jobs:
-  build:
+  notify-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -13,5 +13,26 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
-          template: "./.github/workflows/message-template.json"
+          template: "./.github/workflows/notify.json"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: install
+        run: npm ci
+
+      - name: test
+        run: npm test
+
+      - name: build
+        run: npm run build
+
+      - uses: brymastr/slack-action@v1-beta
+        name: Slack notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        with:
+          template: "./.github/workflows/build.json"
           job_status: ${{ job.status }}
