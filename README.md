@@ -13,7 +13,7 @@ Send custom slack messages given a slack block template
     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
   with:
     template: './template.json'
-    exampleKey1: example value 1
+    example_key1: example value 1
     job_status: ${{ job.status }}
 ```
 
@@ -26,26 +26,31 @@ Send custom slack messages given a slack block template
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "Example: {{ exampleKey1 }} and {{ job_status }}"
+        "text": "Example: {{ example_key1 }} and {{ job_status }}"
       }
     }
   ]
 }
 ```
 
-Use of this action requires a GitHub secret called `SLACK_WEBHOOK`. The value should include the channel id and look something like this: `https://hooks.slack.com/services/11111ZZZZ/22222XXXX/1a2B3c4e5F6G7h8I9j0k`
+Use of this action requires a GitHub secret called `SLACK_WEBHOOK`. The value should include the channel id and look something like one of these:
+
+- `https://hooks.slack.com/services/11111ZZZZ/22222XXXX/1a2B3c4e5F6G7h8I9j0k`
+- `11111ZZZZ/22222XXXX/1a2B3c4e5F6G7h8I9j0k`
 
 See [Creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) for assistance with GitHub Secrets.
 
 See [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks) for assistance with Slack Webhooks.
 
-**Required Arguments**
+### Required Arguments
 
 - **`SLACK_WEBHOOK`** - provided as an `env` variable, this is the full webhook url for your bot channel.
 - **`template`** - provided in the `with` args, is the path to the message template json file. This path should be relative from the project root.
 
-**Optional Arguments**  
-Any other custom arguments can be provided and will be included in the template. From the example above all occurrences of `{{ exampleKey1 }}` in the `template.json` file will be replace with `example value 1`.
+### Optional Arguments
+
+Any other custom arguments can be provided and will be included in the template. From the example above all occurrences of `{{ example_key1 }}` in the `template.json` file will be replace with `example value 1`.  
+**NOTE:** template names in the json file must be lower case.
 
 ## Default and Computed Properties
 

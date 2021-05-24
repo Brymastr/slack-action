@@ -41,9 +41,9 @@ describe('getDefaultVariables', () => {
 
 describe('getInputVariables', () => {
   const props = {
-    INPUT_var1: 'var1_value',
-    INPUT_var2: 'var2_value',
-    INPUT_var3: 'var3_value',
+    INPUT_VAR1: 'var1_value',
+    INPUT_VAR2: 'var2_value',
+    INPUT_VAR3: 'var3_value',
   };
 
   beforeEach(() => {
@@ -64,7 +64,7 @@ describe('getInputVariables', () => {
   });
 
   test('extra unrelated values not included', () => {
-    process.env.UNRELATED_var4 = 'var4_value';
+    process.env.UNRELATED_VAR4 = 'var4_value';
 
     const expected = [
       ['var1', 'var1_value'],

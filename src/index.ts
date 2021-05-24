@@ -2,7 +2,7 @@ import { getInput, setFailed } from '@actions/core';
 import { readFileSync } from 'fs';
 import { getDefaultVariables, getInputVariables, hydrateTemplate, send } from './helpers';
 
-async function main() {
+export default async function main() {
   // get the slack block template
   const messageDir = getInput('template');
   const template = readFileSync(messageDir, 'utf8');

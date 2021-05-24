@@ -43,7 +43,7 @@ export function getDefaultVariables() {
 export function getInputVariables() {
   return Object.entries(process.env)
     .filter(x => x[0].startsWith('INPUT_'))
-    .map(([k, v]) => [k.replace('INPUT_', ''), v]);
+    .map(([k, v]) => [k.replace('INPUT_', '').toLowerCase(), v]);
 }
 
 /**
