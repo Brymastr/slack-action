@@ -47,7 +47,9 @@ exports.getDefaultVariables = getDefaultVariables;
  * variables starting with `INPUT_`
  */
 function getInputVariables() {
-    return Object.entries(process.env).filter(x => x[0].startsWith('INPUT_'));
+    return Object.entries(process.env)
+        .filter(x => x[0].startsWith('INPUT_'))
+        .map(([k, v]) => [k.replace('INPUT_', ''), v]);
 }
 exports.getInputVariables = getInputVariables;
 /**
@@ -56,8 +58,7 @@ exports.getInputVariables = getInputVariables;
 function hydrateTemplate(template, variables) {
     let message = template;
     for (const [k, v] of variables) {
-        const key = k.replace('INPUT_', '').toLowerCase();
-        const regex = new RegExp('{{ *' + key + ' *}}', 'g');
+        const regex = new RegExp('{{ *' + k + ' *}}', 'g');
         message = message.replace(regex, v);
     }
     return message;
