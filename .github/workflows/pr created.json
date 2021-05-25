@@ -1,0 +1,53 @@
+{
+  "text": "PR Created: {{ base_branch }}",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Pull Request Created*\n_<{{ url }}|#{{ number }}: {{ title }}>_"
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "View workflow",
+          "emoji": true
+        },
+        "url": "{{ actions_url }}"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Repo:*\n<{{ repo_url }}|{{ repo }}>"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*User:*\n<https://github.com/{{ actor }}|{{ actor }}>"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Target branch:*\n{{ base_branch }} :arrow_left: {{ head_branch }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Commits:*\n{{ commits }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*File changes:*\n{{ changed_files }}"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Code changes:*\n+{{ additions }}/-{{ deletions }}"
+        }
+      ]
+    }
+  ]
+}

@@ -19,3 +19,5 @@ process.env = { ...props };
 
 import main from './index';
 main;
+
+console.log('done');
