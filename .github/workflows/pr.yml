@@ -16,10 +16,10 @@ jobs:
 
       - name: Get PR properties
         id: pr
-        uses: Brymastr/pr-info-action@v1-beta
+        uses: Brymastr/pr-info-action@v1-beta2
 
       - name: Slack notification
-        uses: Brymastr/slack-action@v0.1.0
+        uses: Brymastr/slack-action@v1
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
