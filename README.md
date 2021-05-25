@@ -86,6 +86,7 @@ Slack notifications are a common feature in automated build pipelines. There are
 
 ## Alternatives
 
+- [abinoda/slack-action](https://github.com/abinoda/slack-action) - works by providing the slack block body as stringified JSON directly in the workflow yaml (messy)
 - [homoluctus/slatify](https://github.com/homoluctus/slatify)
 - [rtCamp/action-slack-notify](https://github.com/rtCamp/action-slack-notify)
 - [8398a7/action-slack](https://github.com/8398a7/action-slack)
