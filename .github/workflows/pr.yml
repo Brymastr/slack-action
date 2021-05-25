@@ -1,0 +1,35 @@
+name: Pull Request Created
+
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  notify:
+    name: notify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Get PR properties
+        id: pr
+        uses: Brymastr/pr-info-action@v1-beta
+
+      - name: Slack notification
+        uses: Brymastr/slack-action@v0.1.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        with:
+          template: "./.github/workflows/pr created.json"
+          base_branch: ${{ steps.pr.outputs.base_branch }}
+          head_branch: ${{ steps.pr.outputs.head_branch }}
+          commits: ${{ steps.pr.outputs.commits }}
+          changed_files: ${{ steps.pr.outputs.changed_files }}
+          additions: ${{ steps.pr.outputs.additions }}
+          deletions: ${{ steps.pr.outputs.deletions }}
+          title: ${{ steps.pr.outputs.title }}
+          url: ${{ steps.pr.outputs.url }}
+          number: ${{ steps.pr.outputs.number }}
