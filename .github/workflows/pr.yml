@@ -16,7 +16,7 @@ jobs:
 
       - name: Get PR properties
         id: pr
-        uses: Brymastr/pr-info-action@v1-beta2
+        uses: Brymastr/pr-info-action@v1-beta3
 
       - name: Slack notification
         uses: Brymastr/slack-action@v1
