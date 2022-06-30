@@ -23,8 +23,10 @@ function getDefaultVariables() {
     const workflowName = process.env.GITHUB_WORKFLOW;
     const eventName = process.env.GITHUB_EVENT_NAME;
     const runNumber = process.env.GITHUB_RUN_NUMBER;
+    const runId = process.env.GITHUB_RUN_ID;
     const repoUrl = `https://github.com/${repo}`;
     const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
+    const runUrl = `${repoUrl}/actions/runs/${runId}`;
     const defaultVariables = [
         ['commit', commit],
         ['repo', repo],
@@ -37,6 +39,7 @@ function getDefaultVariables() {
         ['run_number', runNumber],
         ['repo_url', repoUrl],
         ['actions_url', actionsUrl],
+        ['run_url', runUrl],
     ];
     return defaultVariables;
 }

@@ -70,9 +70,10 @@ Most `github` context properties are included by default without needing to pass
 In addition to these github context properties there are 2 computed properties that could be useful
 
 | Replacement Variable | Description                                               |
-| -------------------- | --------------------------------------------------------- |
+|----------------------|-----------------------------------------------------------|
 | `repo_url`           | the URL of the github repo                                |
 | `actions_url`        | the URL of the github actions workflow run for the commit |
+| `run_url`            | the URL of the github actions workflow run                |
 
 ## Notes
 

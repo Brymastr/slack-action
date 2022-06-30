@@ -8,6 +8,7 @@ const props = {
   GITHUB_WORKFLOW: 'Build and Deploy',
   GITHUB_EVENT_NAME: 'push',
   GITHUB_RUN_NUMBER: 'ny7348d',
+  GITHUB_RUN_ID: '2062177805',
 
   INPUT_KEY1: 'key1 value',
 
