@@ -4,6 +4,21 @@ inputs:
   template:
     description: "slack message json template file"
     required: true
+  color:
+    description: "color of slack message"
+    required: false
+  summary:
+    description: "test execution summary"
+    required: false
+  report_url:
+    description: "test report url"
+    required: false
+  report_path:
+    description: "test report path"
+    required: false
+  datadog_query:
+    description: "datadog url"
+    required: false
 runs:
   using: "node12"
   main: "dist/index.js"
