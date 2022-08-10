@@ -17,6 +17,7 @@ function getDefaultVariables() {
     const commit = process.env.GITHUB_SHA;
     const repo = process.env.GITHUB_REPOSITORY;
     const ref = process.env.GITHUB_REF;
+    const refName = process.env.GITHUB_REF_NAME;
     const headRef = process.env.GITHUB_HEAD_REF;
     const baseRef = process.env.GITHUB_BASE_REF;
     const actor = process.env.GITHUB_ACTOR;
@@ -25,12 +26,14 @@ function getDefaultVariables() {
     const runNumber = process.env.GITHUB_RUN_NUMBER;
     const runId = process.env.GITHUB_RUN_ID;
     const repoUrl = `https://github.com/${repo}`;
+    const branchUrl = `https://github.com/${repo}/tree/${refName}`;
     const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
     const runUrl = `${repoUrl}/actions/runs/${runId}`;
     const defaultVariables = [
         ['commit', commit],
         ['repo', repo],
         ['ref', ref],
+        ['ref_name', refName],
         ['head_ref', headRef],
         ['base_ref', baseRef],
         ['actor', actor],
@@ -38,6 +41,7 @@ function getDefaultVariables() {
         ['event', eventName],
         ['run_number', runNumber],
         ['repo_url', repoUrl],
+        ['branch_url', branchUrl],
         ['actions_url', actionsUrl],
         ['run_url', runUrl],
     ];
@@ -92,7 +96,7 @@ function send(body, channel) {
             });
             response.on('end', () => resolve(Buffer.concat(data).toString()));
         }
-        const req = https_1.request(options, handleResponse);
+        const req = (0, https_1.request)(options, handleResponse);
         req.on('error', reject);
         req.write(body);
         req.end();
@@ -635,20 +639,20 @@ const fs_1 = __nccwpck_require__(747);
 const helpers_1 = __nccwpck_require__(8);
 async function main() {
     // get the slack block template
-    const messageDir = core_1.getInput('template');
-    const template = fs_1.readFileSync(messageDir, 'utf8');
+    const messageDir = (0, core_1.getInput)('template');
+    const template = (0, fs_1.readFileSync)(messageDir, 'utf8');
     // merge input parameters with default variables
-    const inputVariables = helpers_1.getInputVariables();
-    const defaultVariables = helpers_1.getDefaultVariables();
+    const inputVariables = (0, helpers_1.getInputVariables)();
+    const defaultVariables = (0, helpers_1.getDefaultVariables)();
     const variables = inputVariables.concat(defaultVariables);
     // search and replace template hooks
-    const message = helpers_1.hydrateTemplate(template, variables);
+    const message = (0, helpers_1.hydrateTemplate)(template, variables);
     // send the request
     const slackChannel = process.env.SLACK_WEBHOOK.match(/services\/(.*)/)[1];
-    await helpers_1.send(message, slackChannel);
+    await (0, helpers_1.send)(message, slackChannel);
 }
 exports.default = main;
-main().catch(({ message }) => core_1.setFailed(message));
+main().catch(({ message }) => (0, core_1.setFailed)(message));
 //# sourceMappingURL=index.js.map
 })();
 

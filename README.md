@@ -57,10 +57,11 @@ Any other custom arguments can be provided and will be included in the template.
 Most `github` context properties are included by default without needing to pass them in through a `with` argument. Some properties have been renamed to make a bit more sense. See [Contexts](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions#contexts) for more info.
 
 | Property Name       | Replacement Variable |
-| ------------------- | -------------------- |
+| ------------------- |----------------------|
 | `github.sha`        | `commit`             |
 | `github.repository` | `repo`               |
 | `github.ref`        | `ref`                |
+| `github.ref_name`   | `ref_name`           |
 | `github.head_ref`   | `head_ref`           |
 | `github.base_ref`   | `base_ref`           |
 | `github.actor`      | `actor`              |
@@ -72,6 +73,7 @@ In addition to these github context properties there are 2 computed properties t
 | Replacement Variable | Description                                               |
 |----------------------|-----------------------------------------------------------|
 | `repo_url`           | the URL of the github repo                                |
+| `branch_url`         | the URL of the github repo with branch                    |
 | `actions_url`        | the URL of the github actions workflow run for the commit |
 | `run_url`            | the URL of the github actions workflow run                |
 

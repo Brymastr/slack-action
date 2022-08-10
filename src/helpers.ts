@@ -9,6 +9,7 @@ export function getDefaultVariables() {
   const commit = process.env.GITHUB_SHA;
   const repo = process.env.GITHUB_REPOSITORY;
   const ref = process.env.GITHUB_REF;
+  const refName = process.env.GITHUB_REF_NAME;
   const headRef = process.env.GITHUB_HEAD_REF;
   const baseRef = process.env.GITHUB_BASE_REF;
   const actor = process.env.GITHUB_ACTOR;
@@ -17,6 +18,7 @@ export function getDefaultVariables() {
   const runNumber = process.env.GITHUB_RUN_NUMBER;
   const runId = process.env.GITHUB_RUN_ID;
   const repoUrl = `https://github.com/${repo}`;
+  const branchUrl = `https://github.com/${repo}/tree/${refName}`;
   const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
   const runUrl = `${repoUrl}/actions/runs/${runId}`;
 
@@ -24,6 +26,7 @@ export function getDefaultVariables() {
     ['commit', commit],
     ['repo', repo],
     ['ref', ref],
+    ['ref_name', refName],
     ['head_ref', headRef],
     ['base_ref', baseRef],
     ['actor', actor],
@@ -31,6 +34,7 @@ export function getDefaultVariables() {
     ['event', eventName],
     ['run_number', runNumber],
     ['repo_url', repoUrl],
+    ['branch_url', branchUrl],
     ['actions_url', actionsUrl],
     ['run_url', runUrl],
   ];
