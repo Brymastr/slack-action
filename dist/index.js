@@ -29,6 +29,7 @@ function getDefaultVariables() {
     const branchUrl = `https://github.com/${repo}/tree/${refName}`;
     const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
     const runUrl = `${repoUrl}/actions/runs/${runId}`;
+    const title = 'custom title';
     const defaultVariables = [
         ['commit', commit],
         ['repo', repo],
@@ -44,6 +45,7 @@ function getDefaultVariables() {
         ['branch_url', branchUrl],
         ['actions_url', actionsUrl],
         ['run_url', runUrl],
+        ['title', title],
     ];
     return defaultVariables;
 }
@@ -96,7 +98,7 @@ function send(body, channel) {
             });
             response.on('end', () => resolve(Buffer.concat(data).toString()));
         }
-        const req = (0, https_1.request)(options, handleResponse);
+        const req = https_1.request(options, handleResponse);
         req.on('error', reject);
         req.write(body);
         req.end();
@@ -639,20 +641,20 @@ const fs_1 = __nccwpck_require__(747);
 const helpers_1 = __nccwpck_require__(8);
 async function main() {
     // get the slack block template
-    const messageDir = (0, core_1.getInput)('template');
-    const template = (0, fs_1.readFileSync)(messageDir, 'utf8');
+    const messageDir = core_1.getInput('template');
+    const template = fs_1.readFileSync(messageDir, 'utf8');
     // merge input parameters with default variables
-    const inputVariables = (0, helpers_1.getInputVariables)();
-    const defaultVariables = (0, helpers_1.getDefaultVariables)();
+    const inputVariables = helpers_1.getInputVariables();
+    const defaultVariables = helpers_1.getDefaultVariables();
     const variables = inputVariables.concat(defaultVariables);
     // search and replace template hooks
-    const message = (0, helpers_1.hydrateTemplate)(template, variables);
+    const message = helpers_1.hydrateTemplate(template, variables);
     // send the request
     const slackChannel = process.env.SLACK_WEBHOOK.match(/services\/(.*)/)[1];
-    await (0, helpers_1.send)(message, slackChannel);
+    await helpers_1.send(message, slackChannel);
 }
 exports.default = main;
-main().catch(({ message }) => (0, core_1.setFailed)(message));
+main().catch(({ message }) => core_1.setFailed(message));
 //# sourceMappingURL=index.js.map
 })();
 

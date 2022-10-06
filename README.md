@@ -68,7 +68,7 @@ Most `github` context properties are included by default without needing to pass
 | `github.event_name` | `event`              |
 | `github.workflow`   | `workflow`           |
 
-In addition to these github context properties there are 2 computed properties that could be useful
+In addition to these github context properties there are 5 computed properties that could be useful
 
 | Replacement Variable | Description                                               |
 |----------------------|-----------------------------------------------------------|
@@ -76,6 +76,7 @@ In addition to these github context properties there are 2 computed properties t
 | `branch_url`         | the URL of the github repo with branch                    |
 | `actions_url`        | the URL of the github actions workflow run for the commit |
 | `run_url`            | the URL of the github actions workflow run                |
+| `title`              | Notification title                                        |
 
 ## Notes
 

@@ -21,6 +21,7 @@ export function getDefaultVariables() {
   const branchUrl = `https://github.com/${repo}/tree/${refName}`;
   const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
   const runUrl = `${repoUrl}/actions/runs/${runId}`;
+  const title = 'custom title';
 
   const defaultVariables: [string, string][] = [
     ['commit', commit],
@@ -37,6 +38,7 @@ export function getDefaultVariables() {
     ['branch_url', branchUrl],
     ['actions_url', actionsUrl],
     ['run_url', runUrl],
+    ['title', title],
   ];
 
   return defaultVariables;

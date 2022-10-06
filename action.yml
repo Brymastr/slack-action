@@ -7,6 +7,9 @@ inputs:
   color:
     description: "color of slack message"
     required: false
+  title:
+    description: "slack message title"
+    required: false
   summary:
     description: "test execution summary"
     required: false
