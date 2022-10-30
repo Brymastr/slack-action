@@ -5,12 +5,14 @@ describe('getDefaultVariables', () => {
     GITHUB_SHA: 'j8su904nyr4839',
     GITHUB_REPOSITORY: 'slack-action',
     GITHUB_REF: 'refs/heads/dev',
+    GITHUB_REF_NAME: 'feature/test',
     GITHUB_HEAD_REF: 'refs/heads/dev',
     GITHUB_BASE_REF: 'refs/heads/feature',
     GITHUB_ACTOR: 'brymastr',
     GITHUB_WORKFLOW: 'Build and Deploy',
     GITHUB_EVENT_NAME: 'push',
     GITHUB_RUN_NUMBER: 'ny7348d',
+    GITHUB_RUN_ID: '2062177805',
   };
 
   beforeEach(() => {
@@ -23,6 +25,7 @@ describe('getDefaultVariables', () => {
       ['commit', 'j8su904nyr4839'],
       ['repo', 'slack-action'],
       ['ref', 'refs/heads/dev'],
+      ['ref_name', 'feature/test'],
       ['head_ref', 'refs/heads/dev'],
       ['base_ref', 'refs/heads/feature'],
       ['actor', 'brymastr'],
@@ -30,7 +33,10 @@ describe('getDefaultVariables', () => {
       ['event', 'push'],
       ['run_number', 'ny7348d'],
       ['repo_url', 'https://github.com/slack-action'],
+      ['branch_url', 'https://github.com/slack-action/tree/feature/test'],
       ['actions_url', 'https://github.com/slack-action/commit/j8su904nyr4839/checks'],
+      ['run_url', 'https://github.com/slack-action/actions/runs/2062177805'],
+      ['title', 'custom title'],
     ];
 
     const actual = getDefaultVariables();
@@ -80,7 +86,7 @@ describe('getInputVariables', () => {
 
 describe('hydrateTemplate', () => {
   const templateString =
-    '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"*GitHub Actions Build* {{ job_status }}\\n_<{{ repo_url }}/commit/{{ commit }}|{{ commit }}>_"},"accessory":{"type":"button","text":{"type":"plain_text","text":"View workflow","emoji":true},"url":"{{ actions_url }}"}},{"type":"divider"},{"type":"section","fields":[{"type":"mrkdwn","text":"*Repo:*\\n<{{ repo_url }}|{{ repo }}>"},{"type":"mrkdwn","text":"*Status:*\\n{{ job_status }}"},{"type":"mrkdwn","text":"*Ref:*\\n{{ ref }}"},{"type":"mrkdwn","text":"*Event:*\\n{{ event }}"}]}]}';
+    '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"*GitHub Actions Build* {{ job_status }}\\n_<{{ repo_url }}/commit/{{ commit }}|{{ commit }}>_"},"accessory":{"type":"button","text":{"type":"plain_text","text":"View workflow","emoji":true},"url":"{{ actions_url }}"}},"accessory":{"type":"button","text":{"type":"plain_text","text":"View run","emoji":true},"url":"{{ run_url }}"}},{"type":"divider"},{"type":"section","fields":[{"type":"mrkdwn","text":"*Repo:*\\n<{{ repo_url }}|{{ repo }}>"},{"type":"mrkdwn","text":"*Status:*\\n{{ job_status }}"},{"type":"mrkdwn","text":"*Ref:*\\n{{ ref }}"},{"type":"mrkdwn","text":"*Event:*\\n{{ event }}"}]}]}';
 
   test('template variables replaced', () => {
     const variables = [
@@ -88,6 +94,7 @@ describe('hydrateTemplate', () => {
       ['commit', 'j8su904nyr4839'],
       ['repo', 'slack-action'],
       ['ref', 'refs/heads/dev'],
+      ['ref_name', 'feature/test'],
       ['head_ref', 'refs/heads/dev'],
       ['base_ref', 'refs/heads/feature'],
       ['actor', 'brymastr'],
@@ -95,11 +102,14 @@ describe('hydrateTemplate', () => {
       ['event', 'push'],
       ['run_number', 'ny7348d'],
       ['repo_url', 'https://github.com/slack-action'],
+      ['branch_url', 'https://github.com/slack-action/tree/feature/test'],
       ['actions_url', 'https://github.com/slack-action/commit/j8su904nyr4839/checks'],
+      ['run_url', 'https://github.com/slack-action/actions/runs/2062177805'],
+      ['title', 'custom title'],
     ];
 
     const expected =
-      '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"*GitHub Actions Build* Success\\n_<https://github.com/slack-action/commit/j8su904nyr4839|j8su904nyr4839>_"},"accessory":{"type":"button","text":{"type":"plain_text","text":"View workflow","emoji":true},"url":"https://github.com/slack-action/commit/j8su904nyr4839/checks"}},{"type":"divider"},{"type":"section","fields":[{"type":"mrkdwn","text":"*Repo:*\\n<https://github.com/slack-action|slack-action>"},{"type":"mrkdwn","text":"*Status:*\\nSuccess"},{"type":"mrkdwn","text":"*Ref:*\\nrefs/heads/dev"},{"type":"mrkdwn","text":"*Event:*\\npush"}]}]}';
+      '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"*GitHub Actions Build* Success\\n_<https://github.com/slack-action/commit/j8su904nyr4839|j8su904nyr4839>_"},"accessory":{"type":"button","text":{"type":"plain_text","text":"View workflow","emoji":true},"url":"https://github.com/slack-action/commit/j8su904nyr4839/checks"}},"accessory":{"type":"button","text":{"type":"plain_text","text":"View run","emoji":true},"url":"https://github.com/slack-action/actions/runs/2062177805"}},{"type":"divider"},{"type":"section","fields":[{"type":"mrkdwn","text":"*Repo:*\\n<https://github.com/slack-action|slack-action>"},{"type":"mrkdwn","text":"*Status:*\\nSuccess"},{"type":"mrkdwn","text":"*Ref:*\\nrefs/heads/dev"},{"type":"mrkdwn","text":"*Event:*\\npush"}]}]}';
 
     const actual = hydrateTemplate(templateString, variables);
 

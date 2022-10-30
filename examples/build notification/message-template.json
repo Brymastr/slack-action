@@ -28,6 +28,10 @@
         },
         {
           "type": "mrkdwn",
+          "text": "*Branch:*\n<{{ branch_url }}|{{ ref_name }}>"
+        },
+        {
+          "type": "mrkdwn",
           "text": "*Status:*\n{{ job_status }}"
         },
         {
