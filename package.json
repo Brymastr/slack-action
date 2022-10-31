@@ -1,6 +1,6 @@
 {
   "name": "slack-action",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Send fully custom slack messages",
   "main": "lib/index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/brymastr/slack-action#readme",
   "dependencies": {
-    "@actions/core": "1.9.1"
+    "@actions/core": "1.10.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.0",
