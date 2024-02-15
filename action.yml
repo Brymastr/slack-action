@@ -22,6 +22,9 @@ inputs:
   datadog_query:
     description: "datadog url"
     required: false
+  commit_authors:
+    description: "commit authors"
+    required: false
 runs:
   using: "node20"
   main: "dist/index.js"
