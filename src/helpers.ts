@@ -22,6 +22,7 @@ export function getDefaultVariables() {
   const actionsUrl = `${repoUrl}/commit/${commit}/checks`;
   const runUrl = `${repoUrl}/actions/runs/${runId}`;
   const title = 'custom title';
+  const commitAuthors = 'commit authors';
 
   const defaultVariables: [string, string][] = [
     ['commit', commit],
@@ -39,6 +40,7 @@ export function getDefaultVariables() {
     ['actions_url', actionsUrl],
     ['run_url', runUrl],
     ['title', title],
+    ['commit_authors', commitAuthors]
   ];
 
   return defaultVariables;

@@ -37,6 +37,7 @@ describe('getDefaultVariables', () => {
       ['actions_url', 'https://github.com/slack-action/commit/j8su904nyr4839/checks'],
       ['run_url', 'https://github.com/slack-action/actions/runs/2062177805'],
       ['title', 'custom title'],
+      ['commit_authors', 'commit authors']
     ];
 
     const actual = getDefaultVariables();
@@ -106,6 +107,7 @@ describe('hydrateTemplate', () => {
       ['actions_url', 'https://github.com/slack-action/commit/j8su904nyr4839/checks'],
       ['run_url', 'https://github.com/slack-action/actions/runs/2062177805'],
       ['title', 'custom title'],
+      ['commit_authors', 'commit authors']
     ];
 
     const expected =
